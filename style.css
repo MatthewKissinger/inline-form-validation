@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(78, 107, 224);
+}
+
+.form-container {
+    margin: 2rem;
+}
+
+form {
+    text-align: center;
+    border: 2px solid rgb(107, 107, 235);
+    border-radius: 5px;
+    padding: 2rem;
+    margin-top: 1rem;
+    width: 500px;
+    margin: 0 auto;
+}
+
+label {
+    position: relative;
+    margin: 0 auto;
+    width: 400px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input {
+    position: absolute;
+    right: 0;
+    outline: none;
+    padding: .25rem;
+    border-radius: 5px;
+}
+
+#mail + span {
+    height: 25px;
+    background-color: red;
+}
+
+button {
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    border: none;
+    padding: .75rem 1.5rem;
+    border-radius: 6px;
+    background-color: rgb(47, 169, 47);
+    color: #fff;
+    margin-top: 1.5rem;
+    cursor: pointer;
+}
+

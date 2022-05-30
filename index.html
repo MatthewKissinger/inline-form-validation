@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS inline validation</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>Inline Form Validation Sample</header>
+    
+    <div class="form-container">
+        <form novalidate>
+            <p>
+                <label for="mail">
+                    <span>email address:</span>
+                    <input type="email" id="mail" name="mail" required minlength="8">
+                    <span class="error"></span>
+                </label>
+            </p>
+            
+            <p>
+                <label for="country">
+                    <span>country:</span>
+                    <input type="country" id="country" name="country" required minlength="3">
+                    <span class="error"></span>
+                </label>
+            </p>
+                
+            <p>
+                <label for="zip">
+                    <span>zip code:</span>
+                    <input type="zip" id="zip" name="zip" required minlength="8">
+                    <span class="error"></span>
+                </label>
+            </p>
+                
+
+            <p>
+                <label for="pass1">
+                    <span>password:</span>
+                    <input type="pass1" id="pass1" name="pass1" required minlength="8">
+                    <span class="error"></span>
+                </label>
+            </p>
+                
+            
+            <p>
+                <label for="pass2">
+                    <span>confirm password:</span>
+                    <input type="=pass2" id="pass2" name="pass2" required minlength="8">
+                    <span class="error"></span>
+                </label>
+            </p>
+                
+            <button>Submit</button>
+          </form>
+    </div>
+    
+
+    <script src="./index.js"></script>
+</body>
+</html>
