@@ -19,10 +19,7 @@ header {
     margin: 2rem;
 }
 
-p {
-    /* border: 1px solid green; */
-    padding: .75rem;
-}
+
 
 form {
     text-align: center;
@@ -32,6 +29,11 @@ form {
     margin-top: 1rem;
     width: 600px;
     margin: 0 auto;
+}
+
+p {
+    /* border: 1px solid green; */
+    padding: 1rem;
 }
 
 label {
@@ -45,17 +47,39 @@ label {
     /* border: 1px solid blue; */
 }
 
+p > label[for="pass1"] {
+    margin-bottom: 1.5rem;
+}
+
+.label-example {
+    position: absolute;
+    bottom: -.5rem;
+    left: 1.5rem;
+    font-size: .75rem;
+    color: rgb(62, 62, 62);
+}
+
+.password-example {
+    width: 85%;
+    position: absolute;
+    bottom: -3.5rem;
+    right: 0;
+    font-size: .75rem;
+    color: rgb(62, 62, 62);
+}
+
 span.red-asterisk {
     color: red;
 }
 
-input {
+input, select {
     width: 300px;
     position: absolute;
     right: 0;
     outline: none;
     padding: .25rem .5rem;
     border-radius: 5px;
+    background-color: #fff;
     border: 2px solid lightgray;
 }
 
@@ -71,12 +95,20 @@ input:focus:invalid {
     border: 2px solid rgb(237, 107, 107);
 }
 
-input + span {
+input + span, select + span {
     font-size: .8rem;
     color: red;
     position: absolute;
     bottom: -10px;
     right: 0px;
+}
+
+.valid {
+    border: 2px solid rgb(78, 219, 78);
+}
+
+.invalid {
+    border: 2px solid rgb(237, 107, 107);
 }
 
 button {

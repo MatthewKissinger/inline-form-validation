@@ -24,6 +24,7 @@
                 <label for="country">
                     <span><span class="red-asterisk">*</span> country:</span>
                     <select type="country" id="country" name="country" required minlength="3">
+                        <option value="default">Please choose a country</option>
                     </select>
                     <span class="error"></span>
                 </label>
@@ -31,8 +32,8 @@
                 
             <p>
                 <label for="zip">
-                    <span><span class="red-asterisk">*</span> zip code:</span>
-                    <input type="zip" id="zip" name="zip" required minlength="5" maxlength="10">
+                    <span><span class="red-asterisk">*</span> zip code: <span class="label-example">(91210-####) 5 or 9 digits</span></span>
+                    <input type="text" id="zip" name="zip" required minlength="5" maxlength="10" pattern="(^\d{5}$)|(^\d{5}-\d{4}$)">
                     <span class="error"></span>
                 </label>
             </p>
@@ -41,7 +42,8 @@
             <p>
                 <label for="pass1">
                     <span><span class="red-asterisk">*</span> password:</span>
-                    <input type="pass1" id="pass1" name="pass1" required minlength="8">
+                    <span class="password-example">Password must have at least 8 characters that include 1 lowercase letter, 1 uppercase letter, 1 number, and 1 special character (!@#$%^&*)</span>
+                    <input type="text" id="pass1" name="pass1" required minlength="8" maxlength="15" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$">
                     <span class="error"></span>
                 </label>
             </p>
@@ -50,7 +52,7 @@
             <p>
                 <label for="pass2">
                     <span><span class="red-asterisk">*</span> confirm password:</span>
-                    <input type="=pass2" id="pass2" name="pass2" required minlength="8">
+                    <input type="text" id="pass2" name="pass2" required>
                     <span class="error"></span>
                 </label>
             </p>

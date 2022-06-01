@@ -1,13 +1,6 @@
 // TODO 
 
-// get countries from rest countries api
 
-fetch(`https://restcountries.com/v2/all`).then(function(res) {
-    // console.log(res.json());
-    return res.json();
-}).then(function(data) {
-    console.log(data);
-});
 
 // setup up validation functions for each type of input
 
@@ -20,8 +13,6 @@ const mailError = document.querySelector('#mail + span.error');
 const country = document.querySelector('#country');
 const countryError = document.querySelector('#country + span.error');
 
-// generate options tags with the country names from the rest countries api
-
 const zipcode = document.querySelector('#zip');
 const zipcodeError = document.querySelector('#zip + span.error');
 
@@ -31,6 +22,16 @@ const password1Error = document.querySelector('#pass1 + span.error');
 const password2 = document.querySelector('#pass2');
 const password2Error = document.querySelector('#pass2 + span.error');
 
+// get countries from rest countries api
+
+fetch(`https://restcountries.com/v2/all`).then(function(res) {
+    return res.json();
+}).then(function(data) {
+    initializeCountries(data);
+}).catch(function(err) {
+    console.log("Error: ", err);
+});
+
 // Validation Event listeners
 
 mail.addEventListener('input', function() {
@@ -38,21 +39,59 @@ mail.addEventListener('input', function() {
         // clear the content of the error message
         mailError.textContent = '';
     } else {
-        showErrorAll(mail);
+        showEmailError(mail);
+    }
+});
+
+country.addEventListener('focusout', function() {
+    showCountryError();
+});
+
+country.addEventListener('change', function() {
+    showCountryError();
+})
+
+zipcode.addEventListener('input', function() {
+    // console.log(zipcode.validity);
+    if (zipcode.validity.valid) {
+        zipcodeError.textContent = '';
+    } else {
+        showZipcodeError(zipcode);
     }
 })
 
 form.addEventListener('submit', function(e) {
+    // test for email input validity, if valid submit form
     if (!mail.validity.valid) {
-        showErrorAll(mail);
+        showEmailError(mail);
+        e.preventDefault();
+    }
+
+    if (!country.classList.contains('valid')) {
+        showCountryError();
+        e.preventDefault();
+    }
+
+    if (!zipcode.validity.valid) {
+        showZipcodeError(zipcode);
         e.preventDefault();
     }
     
-})
+});
 
 // Methods
 
-function showErrorAll(input) {
+function initializeCountries(data) {
+    data.forEach((item) => {
+        let option = document.createElement('option');
+        option.setAttribute('value', item.name);
+        option.innerText = item.name;
+
+        country.appendChild(option);
+    })
+}
+
+function showEmailError(input) {
     if (input.validity.valueMissing) {
         input.nextElementSibling.textContent = `You need to enter an ${input.type}`;
     } else if (input.validity.typeMismatch) {
@@ -62,4 +101,28 @@ function showErrorAll(input) {
     } else if (input.validity.patternMismatch) {
         input.nextElementSibling.textContent = `Please enter a valid ${input.type}`;
     }
+}
+
+function showCountryError() {
+    if (country.value === 'default') {
+        countryError.textContent = 'Please select a country';
+        country.classList.add('invalid');
+        country.classList.remove('valid');
+    } else {
+        countryError.textContent = '';
+        country.classList.add('valid');
+        country.classList.remove('invalid');
+    }
+}
+
+function showZipcodeError(input) {
+    if (input.validity.valueMissing) {
+        input.nextElementSibling.textContent = `Do not leave input blank`;
+    } else if (input.validity.patternMismatch) {
+        input.nextElementSibling.textContent = `Please enter a valid zipcode`;
+    }
+}
+
+function showPass1Error() {
+    
 }
