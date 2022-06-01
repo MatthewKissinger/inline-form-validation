@@ -14,24 +14,25 @@
         <form novalidate>
             <p>
                 <label for="mail">
-                    <span>email address:</span>
-                    <input type="email" id="mail" name="mail" required minlength="8">
+                    <span><span class="red-asterisk">*</span> email address:</span>
+                    <input type="email" id="mail" name="mail" required minlength="4" pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}">
                     <span class="error"></span>
                 </label>
             </p>
             
             <p>
                 <label for="country">
-                    <span>country:</span>
-                    <input type="country" id="country" name="country" required minlength="3">
+                    <span><span class="red-asterisk">*</span> country:</span>
+                    <select type="country" id="country" name="country" required minlength="3">
+                    </select>
                     <span class="error"></span>
                 </label>
             </p>
                 
             <p>
                 <label for="zip">
-                    <span>zip code:</span>
-                    <input type="zip" id="zip" name="zip" required minlength="8">
+                    <span><span class="red-asterisk">*</span> zip code:</span>
+                    <input type="zip" id="zip" name="zip" required minlength="5" maxlength="10">
                     <span class="error"></span>
                 </label>
             </p>
@@ -39,7 +40,7 @@
 
             <p>
                 <label for="pass1">
-                    <span>password:</span>
+                    <span><span class="red-asterisk">*</span> password:</span>
                     <input type="pass1" id="pass1" name="pass1" required minlength="8">
                     <span class="error"></span>
                 </label>
@@ -48,7 +49,7 @@
             
             <p>
                 <label for="pass2">
-                    <span>confirm password:</span>
+                    <span><span class="red-asterisk">*</span> confirm password:</span>
                     <input type="=pass2" id="pass2" name="pass2" required minlength="8">
                     <span class="error"></span>
                 </label>
@@ -58,7 +59,6 @@
           </form>
     </div>
     
-
     <script src="./index.js"></script>
 </body>
 </html>
