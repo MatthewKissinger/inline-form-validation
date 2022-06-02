@@ -95,6 +95,14 @@ input:focus:invalid {
     border: 2px solid rgb(237, 107, 107);
 }
 
+#pass2.valid {
+    border: 2px solid rgb(78, 219, 78);
+}
+
+#pass2.invalid {
+    border: 2px solid rgb(237, 107, 107);
+}
+
 input + span, select + span {
     font-size: .8rem;
     color: red;

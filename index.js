@@ -60,6 +60,24 @@ zipcode.addEventListener('input', function() {
     }
 })
 
+password1.addEventListener('input', function() {
+    if (password1.validity.valid) {
+        password1Error.textContent = '';
+    } else {
+        showPass1Error();
+    }
+});
+
+password2.addEventListener('input', function() {
+    if (password1.value === password2.value) {
+        password2Error.textContent = '';
+        password2.classList.add('valid');
+        password2.classList.remove('invalid');
+    } else {
+        showPass2Error();
+    }
+})
+
 form.addEventListener('submit', function(e) {
     // test for email input validity, if valid submit form
     if (!mail.validity.valid) {
@@ -74,6 +92,16 @@ form.addEventListener('submit', function(e) {
 
     if (!zipcode.validity.valid) {
         showZipcodeError(zipcode);
+        e.preventDefault();
+    }
+
+    if (!password1.validity.valid) {
+        showPass1Error();
+        e.preventDefault();
+    }
+
+    if (!password2.classList.contains('valid')) {
+        showPass2Error();
         e.preventDefault();
     }
     
@@ -124,5 +152,29 @@ function showZipcodeError(input) {
 }
 
 function showPass1Error() {
-    
+    if (password1.validity.valueMissing) {
+        password1Error.textContent = 'Cannot leave input blank';
+    } else if (password1.validity.patternMismatch) {
+        password1Error.textContent = 'Entered must match the specifications below';
+    }
+}
+
+function showPass2Error() {
+    if (password2.validity.valueMissing) {
+        password2Error.textContent = 'Cannot leave input blank';
+        password2.classList.add('invalid');
+        password2.classList.remove('valid');
+    } else if (password1.value !== password2.value) {
+        password2Error.textContent = "Passwords do not match";
+        password2.classList.add('invalid');
+        password2.classList.remove('valid');
+    } 
+    // else if (password1.value === password2.value) {
+    //     password2Error.textContent = '';
+    //     password2.classList.remove('invalid');
+    //     password2.classList.add('valid');
+    // }
+
+    console.log(password1.value);
+    console.log(password2.value);
 }
